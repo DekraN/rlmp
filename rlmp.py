@@ -32,6 +32,7 @@ ap.add_argument("-fo", "--out_file", metavar="OUTPUT-FILE", type=str, default="r
 args = vars(ap.parse_args())
 
 # Kernel Info
+
 your_kernel_name = args["kernel"]
 your_machine_name = args["machine"]
 Flops = args["Flops"]
@@ -55,9 +56,9 @@ peak_fp_performance = args["peakperf"] # GFLOPS/s
 ridge_point = peak_fp_performance/bmax
 sample_y = round(2*bmax, 2)
 
-Flops_opt = args["Flopsopt"]
-L3CM_opt = args["L3CMopt"]
-etime_opt = args["exectimeopt"]
+Flops_opt = args["fopt"]
+L3CM_opt = args["l3opt"]
+etime_opt = args["etopt"]
 
 optimized = Flops_opt and L3CM_opt and etime_opt
 
