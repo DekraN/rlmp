@@ -1,7 +1,7 @@
 #######################################
 ####### Roofline Model Plotter ########
-##### Marco Chiarelli @ UNISALENTO#####
-## marco_chiarelli@yahoo.it 19/03/2019#
+##### Marco Chiarelli @ CMCC ##########
+## marco_chiarelli@cmcc.it 19/03/2019##
 #######################################
 #######################################
 
@@ -38,7 +38,7 @@ your_machine_name = args["mach"]
 Flops = args["fops"]
 Gflops = Flops/(10**9)
 L3CM = args["l3"]
-etime = ["et"]
+etime = args["et"]
 GFLOPS = Gflops/etime # y coordinate
 
 global Flops_opt
@@ -77,9 +77,6 @@ out_file = args["out_file"]
 # Some other stuffs
 traffic = (L3CM*L3LineSize)/(1024**3)
 arithmetic_int = Gflops/traffic
-
-print("arrived here")
-exit(0)
 
 def printline():
     print("--------------------------------------------------")
@@ -157,11 +154,12 @@ logbase = 2
 fig, ax = plt.subplots()
 # Machine RLM plot
 ax.loglog(np.where(x_axis >= ridge_point, 0, x_axis),np.where(peak_memory_BW_plt >= peak_fp_performance, 0, peak_memory_BW_plt),'-',basex=logbase,basey=logbase,linewidth=2.5)
-ax.loglog(np.where(x_axis >= ridge_point, x_axis, 0),np.where(peak_fp_performance_plt > peak_memory_BW_plt, 0, peak_fp_performance_plt),'-',basex=logbase,basey=logbase,linewidth=2.5)
+ax.loglog(np.where(x_axis >= ridge_point, x_axis, 0),np.where(peak_fp_performance_plt > peak_memory_BW_plt, 0, peak_fp_performance_plt),'o',basex=logbase,basey=logbase,linewidth=1.8)
 ax.loglog(ridge_point, peak_fp_performance,'+',basex=logbase,basey=logbase,markeredgewidth=3,markersize=10)
 # Kernel(s) plot
 ax.loglog(arithmetic_int, GFLOPS,'o',basex=logbase,basey=logbase)
-if optimized == True:
+
+if optimized:
     ax.loglog(arithmetic_int_opt, GFLOPS_opt,'o',basex=logbase,basey=logbase)
 
 def ticks(y, pos):
@@ -177,10 +175,10 @@ plt.ylabel("Attainable Performance [GFLOPS = GFlops/s]")
 plt.legend(optimized == True and ["Peak Memory BW", "Peak FP Performance", "Ridge Point", "Your Kernel", "Your Optimized Kernel"] or ["Peak Memory BW", "Peak FP Performance", "Ridge Point", "Your Kernel"], loc='best')
 plt.title("Roofline Model (RLM) of: " + your_kernel_name)
 
-if autosave:
-    fig.savefig("rlm.png", dpi=96 * 10)
-else:
-    plt.show()
+#if autosave:
+fig.savefig(out_file) #, dpi=96 * 10)
+#else:
+#    plt.show()
 
 print("Thank you for using this program.")
 print(" ")
