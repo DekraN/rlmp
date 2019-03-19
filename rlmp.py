@@ -1,7 +1,7 @@
 #######################################
 ####### Roofline Model Plotter ########
 ##### Marco Chiarelli @ UNISALENTO#####
-## marco_chiarelli@yahoo.it 23/05/2017#
+## marco_chiarelli@yahoo.it 19/03/2019#
 #######################################
 #######################################
 
