@@ -33,12 +33,12 @@ args = vars(ap.parse_args())
 
 # Kernel Info
 
-your_kernel_name = args["kernel"]
-your_machine_name = args["machine"]
-Flops = args["Flops"]
+your_kernel_name = args["kern"]
+your_machine_name = args["mach"]
+Flops = args["fops"]
 Gflops = Flops/(10**9)
-L3CM = args["L3CM"]
-etime = ["exectime"]
+L3CM = args["l3"]
+etime = ["et"]
 GFLOPS = Gflops/etime # y coordinate
 
 global Flops_opt
@@ -50,9 +50,9 @@ global traffic_opt
 global arithmetic_int_opt
 
 # Machine Info
-L3LineSize = args["l3cls"] # LL cache line size
-bmax = args["bmax"] # maximum bandwidth;
-peak_fp_performance = args["peakperf"] # GFLOPS/s
+L3LineSize = args["l3l"] # LL cache line size
+bmax = args["bm"] # maximum bandwidth;
+peak_fp_performance = args["pp"] # GFLOPS/s
 ridge_point = peak_fp_performance/bmax
 sample_y = round(2*bmax, 2)
 
@@ -70,13 +70,16 @@ if optimized:
 
 # Verbose Settings
 # useful for debugging
-verbose_machine = args["verbose_machine"]
-verbose_kernel = args["verbose_kernel"]
+verbose_machine = args["vm"]
+verbose_kernel = args["vk"]
 out_file = args["out_file"]
 
 # Some other stuffs
 traffic = (L3CM*L3LineSize)/(1024**3)
 arithmetic_int = Gflops/traffic
+
+print("arrived here")
+exit(0)
 
 def printline():
     print("--------------------------------------------------")
