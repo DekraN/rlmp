@@ -1,7 +1,7 @@
 #######################################
 ####### Roofline Model Plotter ########
 ##### Marco Chiarelli @ CMCC ##########
-## marco.chiarelli@cmcc.it 19/03/2019##
+## marco.chiarelli@cmcc.it 20/03/2019##
 #######################################
 #######################################
 
@@ -104,8 +104,8 @@ def printKernel(your_kernel_name, Flops, L3CM, etime, Gflops, GFLOPS, traffic, a
 printline()
 print("####### Roofline Model Plotter ########")
 print("#######################################")
-print("##### Marco Chiarelli @ UNISALENTO#####")
-print("## marco_chiarelli@yahoo.it 23/05/2017#")
+print("##### Marco Chiarelli @    CMCC  #####")
+print("## marco.chiarelli@cmcc.it 20/03/2019#")
 print("#######################################")
 printline()
 
